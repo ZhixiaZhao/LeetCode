@@ -9,9 +9,8 @@ class Solution:
                 for j in range(i, len(s)):
                     if s[j] not in str_array:
                         str_array.append(s[j])
-                        max_len = max(max_len, len(str_array))
                     else:
                         break
-                # max_len = max(max_len, len(str_array))
+                max_len = max(max_len, len(str_array))
         return max_len
         
