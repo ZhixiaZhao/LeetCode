@@ -1,27 +1,34 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums.sort()
-        res, k = [], 0
-        for k in range(len(nums) - 2):
-            if nums[k] > 0: break # 1. because of j > i > k.
-            if k > 0 and nums[k] == nums[k - 1]: continue # 2. skip the same `nums[k]`.
-            i, j = k + 1, len(nums) - 1
-            while i < j: # 3. double pointer
-                s = nums[k] + nums[i] + nums[j]
-                if s < 0:
-                    i += 1
-                    while i < j and nums[i] == nums[i - 1]: i += 1
-                elif s > 0:
-                    j -= 1
-                    while i < j and nums[j] == nums[j + 1]: j -= 1
+        nums.sort() # sort the list
+        result = []
+        for i in range(len(nums) - 2):
+            # because this is a sorted list, if the first one is larger than 0, the remaining two numbers will be larger than 0
+            if nums[i] > 0:
+                return result 
+            # skip same numbers
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            left = i + 1
+            right = len(nums) - 1
+            while left < right:
+                if nums[i] + nums[left] + nums[right] == 0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    left += 1
+                    right -= 1
+                    while left < right and nums[left] == nums[left - 1]:
+                        left += 1
+                    while left < right and nums[right] == nums[right + 1]:
+                        right -= 1
+                
+                elif nums[i] + nums[left] + nums[right] > 0:
+                    right -= 1
+                    while left < right and nums[right] == nums[right + 1]:
+                        right -= 1
                 else:
-                    res.append([nums[k], nums[i], nums[j]])
-                    i += 1
-                    j -= 1
-                    while i < j and nums[i] == nums[i - 1]: i += 1
-                    while i < j and nums[j] == nums[j + 1]: j -= 1
-        return res
-
-
-            
+                    left += 1
+                    while left < right and nums[left] == nums[left - 1]:
+                        left += 1
+        return result
+                
         
