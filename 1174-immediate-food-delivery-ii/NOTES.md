@@ -1,0 +1,1 @@
+The IN operator allows you to determine if a value matches any value in a list of values.
