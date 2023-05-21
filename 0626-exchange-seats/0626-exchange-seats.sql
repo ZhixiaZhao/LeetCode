@@ -1,5 +1,8 @@
 # Write your MySQL query statement below
-SELECT
-ROW_NUMBER() OVER(order by IF(MOD(id, 2) = 0, id-1, id+1) ) as id,
-student
-FROM seat
+select (case 
+        when id % 2 != 0 and id != (select count(*) from Seat) then id + 1
+       when id % 2 != 0 and id = (select count(*) from Seat) then id
+       else id - 1 end) as id, 
+       student
+from Seat
+order by id asc
