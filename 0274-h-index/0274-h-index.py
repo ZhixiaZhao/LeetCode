@@ -9,11 +9,9 @@ class Solution:
                 return length - i
         return 0
 '''
-There are three conditions:
+There are following conditions:
 1). If the array contains only one element and it is greater than zero, the h-index is 1.
 2). If the smallest value in the sorted array is greater than or equal to the length of the array, the h-index is equal to the length of array.
-3). 
-
-
- Otherwise, the array is traversed, and for each index i, the value at that index is compared to i+1. If the value is less than i+1, i is returned as the h-index. If none of the conditions are met, the h-index is 0.
+3). Otherwise, for each index i, the value at that index is compared to the length of remaining array. If the value is equal to or greater than the lenght of remaing array, i is return as the i-index
+4). None of condition are met, the i-index is 0
 '''
