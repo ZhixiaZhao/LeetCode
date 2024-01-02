@@ -22,7 +22,7 @@ class Solution:
     
         # BFS: Breath First Search
         # put the tree in the queue, count the level of tree, using deque()
-        count = 0
+        # count = 0
 #         q = deque([root]) # append() and popleft() are used to enqueue and dequeue
 #         while q:
 #             count += 1
@@ -36,25 +36,37 @@ class Solution:
 #                     q.append(node.right)
                     
 #         return count
-        # Also can use list to complete this 
-        q = [root]
-        while q:
-            count += 1
-            q_len = len(q)
+#         Also can use list to complete this 
+#         q = [root]
+#         while q:
+#             count += 1
+#             q_len = len(q)
             
-            for i in range(q_len):
-                node = q.pop(0)
-                if node.left:
-                    q.append(node.left)
-                if node.right:
-                    q.append(node.right)
-        return count
-        
-                
-            
-            
-            
+#             for i in range(q_len):
+#                 node = q.pop(0)
+#                 if node.left:
+#                     q.append(node.left)
+#                 if node.right:
+#                     q.append(node.right)
+#         return count
         
         
         # Iterative DFS
+        # using stack to every node and find the maximum depth
+        stack = [[root, 1]]
+        count = 0   
+        while stack:
+            node, depth = stack.pop()
+            # if node:
+            #     count = max(count, depth)
+            #     stack.append([node.left, depth + 1])
+            #     stack.append([node.right, depth + 1])
+            count = max(count, depth)
+            if node.left:
+                stack.append([node.left, depth + 1])
+            if node.right:
+                stack.append([node.right, depth + 1])
+        return count
+                
+        
         
