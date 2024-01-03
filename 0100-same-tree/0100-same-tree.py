@@ -14,21 +14,22 @@ class Solution:
         # both has the same value, True (2, 2)
         # one has value, other one has other value, False (2, 3)
         
-        if not p and not q:
-            return True
-        if not p or not q:
-            return False
-        if p.val != q.val:
-            return False
-        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        
-        # if p and q:
-        #     if p.val == q.val:
-        #         return True
-        #     elif p.val != q.val:
-        #         return False
-        #     else:
-        #         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
-        # else:
+        # if not p and not q:
+        #     return True
+        # if not p or not q:
         #     return False
+        # if p.val != q.val:
+        #     return False
+        # return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        
+        if p and q:
+            if p.val != q.val:
+                return False
+            else:
+                return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        elif not p and not q:
+            return True
+        else:
+            return False
+        
         
