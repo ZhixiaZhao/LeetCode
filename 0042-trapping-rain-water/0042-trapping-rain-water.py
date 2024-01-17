@@ -4,15 +4,17 @@ class Solution:
             return 0
         
         # Two pointers
-        left = 0
-        right = len(height) - 1
+        left = 0 # left pointer position
+        right = len(height) - 1 #right pointer position
         
-        maxLeft = height[left]
-        maxRight = height[right]
+        maxLeft = height[left] # max value from left
+        maxRight = height[right] # max right from right
         result = 0
         
-        while left < right:
-            if maxLeft < maxRight:
+        while left < right: # move two pointers
+            # if max left value is smaller than max right value, move left pointer
+            # if right left value is smaller than max left value, move right pointer
+            if maxLeft < maxRight: 
                 left += 1
                 maxLeft = max(maxLeft, height[left])
                 result += (maxLeft - height[left])
