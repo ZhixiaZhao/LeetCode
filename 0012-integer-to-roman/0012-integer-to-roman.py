@@ -9,12 +9,15 @@ class Solution:
                       1000: "M"}
         result = ""
         
+        '''
+        # more efficiency
         for n in [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]:
             while n <= num:
                 result += int_map[n]
                 num -= n
         return result
         '''
+        
         thounds = num // 1000 
         hundreds = (num % 1000) // 100 
         tens = (num % 100) // 10 
@@ -61,4 +64,4 @@ class Solution:
         
         
         return result
-        '''
+        
