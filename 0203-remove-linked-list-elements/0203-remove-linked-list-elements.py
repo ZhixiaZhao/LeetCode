@@ -16,7 +16,7 @@ class Solution:
             if head.next:
                 head = head.next
             else:
-                return
+                return 
         cur = head
         while cur.next:
             if cur.next.val == val:
